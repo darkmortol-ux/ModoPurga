@@ -1,0 +1,105 @@
+# ============================================================
+#  ModoPurga - configuracion
+#  IMPORTANTE: usa solo ESPACIOS (nunca tabulaciones).
+# ============================================================
+
+# El plugin viene DESACTIVADO. Cambia a true y usa /purga reload (o reinicia).
+enabled: false
+
+# Mundo donde ocurre la Purga (debe existir, por ejemplo creado con Multiverse).
+event-world: "mundo_purga"
+
+# Mundo Survival al que vuelven los jugadores al salir / morir / terminar.
+survival-fallback-world: "world"
+
+# Tamaño del borde (en bloques) en cada fase.
+border-size-looting: 500
+border-size-pvp: 50
+
+# Tiempos (segundos)
+looting-time-seconds: 600
+pvp-countdown-seconds: 10
+pvp-max-seconds: 600        # duracion maxima de la fase PvP
+end-delay-seconds: 10       # espera antes de devolver a todos y resetear el mundo
+
+# Minimo de jugadores para poder usar /purga start
+min-players: 2
+
+# Como se resetea el mundo al terminar:
+#   bukkit     -> descarga el mundo, borra su carpeta y lo crea con otra seed
+#   multiverse -> ejecuta el comando de abajo desde la consola
+reset-method: bukkit
+multiverse-regen-command: "mv regen {world} -s"
+
+# Comandos permitidos DENTRO del mundo del evento (todo lo demas se bloquea).
+# Escribelos en minusculas y con "/".
+whitelisted-commands:
+  - "/purga salir"
+  - "/purga leave"
+  - "/purga status"
+
+# Loot. Formato: MATERIAL:cantidad  o  MATERIAL:minimo-maximo
+loot:
+  ground-items-count: 150      # items sueltos en el suelo
+  structures-count: 12         # estructuras con cofre
+  ground-items:
+    - "WOODEN_SWORD:1"
+    - "STONE_SWORD:1"
+    - "IRON_SWORD:1"
+    - "BOW:1"
+    - "ARROW:8-16"
+    - "LEATHER_CHESTPLATE:1"
+    - "CHAINMAIL_HELMET:1"
+    - "IRON_BOOTS:1"
+    - "COOKED_BEEF:2-5"
+    - "BREAD:3-6"
+    - "GOLDEN_APPLE:1"
+    - "SHIELD:1"
+  chest-items:
+    - "DIAMOND_SWORD:1"
+    - "IRON_CHESTPLATE:1"
+    - "IRON_LEGGINGS:1"
+    - "DIAMOND_HELMET:1"
+    - "CROSSBOW:1"
+    - "ARROW:16-32"
+    - "GOLDEN_APPLE:1-3"
+    - "ENDER_PEARL:1-2"
+    - "COOKED_PORKCHOP:4-8"
+    - "SHIELD:1"
+    - "SPLASH_POTION:1"
+
+# Mensajes (formato MiniMessage: <red>texto</red>). Placeholders entre {llaves}.
+messages:
+  prefix: "<dark_red>[Purga]</dark_red> "
+  disabled: "{prefix}<red>El Modo Purga esta desactivado en la configuracion."
+  world-missing: "{prefix}<red>El mundo del evento no existe o no esta cargado."
+  already-running: "{prefix}<red>Ya hay una partida en curso."
+  not-enough-players: "{prefix}<red>No hay suficientes jugadores para empezar."
+  start-ok: "{prefix}<green>¡Partida iniciada!"
+  stopped: "{prefix}<yellow>Partida detenida."
+  reloaded: "{prefix}<green>Configuracion recargada."
+  usage: "{prefix}<yellow>Uso: /purga <salir|status|start|stop|reload>"
+  no-permission: "{prefix}<red>No tienes permiso."
+  only-players: "{prefix}<red>Solo jugadores pueden usar esto."
+  not-in-game: "{prefix}<red>No estas participando en la Purga."
+  left: "{prefix}<yellow>Has abandonado la Purga."
+  joined: "{prefix}<green>Has entrado a la Purga. ¡Busca loot y sobrevive!"
+  player-joined: "{prefix}<gray>{player} entro a la Purga ({count} jugadores)."
+  player-left: "{prefix}<gray>{player} abandono la Purga. Quedan {count}."
+  player-eliminated: "{prefix}<red>{player} ha sido eliminado. Quedan {count}."
+  game-in-progress: "{prefix}<red>La partida ya esta en fase PvP. Intenta en la proxima."
+  game-started: "{prefix}<green>¡Comienza el looting! El PvP esta desactivado."
+  pvp-phase: "{prefix}<red>¡Fase PvP! Te dimos una brujula que apunta al jugador mas cercano."
+  pvp-started: "{prefix}<dark_red><bold>¡PELEEN!"
+  countdown-title: "<red><bold>PvP en {time}"
+  pvp-disabled: "<yellow>El PvP aun no esta activo."
+  command-blocked: "{prefix}<red>Ese comando esta bloqueado durante la Purga. Usa /purga salir."
+  victory-broadcast: "{prefix}<gold>¡{winner} ha sobrevivido al Modo Purga y ha ganado la partida!"
+  winner-reward-claim: "{prefix}<green>¡Felicidades! Has ganado un Kit Personalizado. Por favor ponte en contacto con el Host para reclamarlo."
+  no-winner-broadcast: "{prefix}<yellow>La Purga termino sin ganador."
+  status: "{prefix}<gray>Estado: <white>{state}</white> | Jugadores: <white>{players}</white> | Tiempo: <white>{time}</white>"
+  bossbar-waiting: "<gray>Purga: esperando inicio"
+  bossbar-looting: "<yellow>Looting - PvP en {time}"
+  bossbar-countdown: "<red>El PvP empieza en {time}"
+  bossbar-pvp: "<dark_red>Deathmatch - termina en {time}"
+  bossbar-ending: "<green>La Purga termino"
